@@ -1,6 +1,6 @@
 <?php
 /**
- * plg_cntools_bannerext - Joomla Plugin
+ * plg_cntools_jem_contentext - Joomla Plugin
  *
  * @package    Joomla
  * @subpackage Plugin
@@ -23,20 +23,54 @@ class plgContentPlg_CNTools_JEM_ContentExt extends JPlugin
 		parent::__construct( $subject, $config );
 	}
 
+	public function onContentPrepare($context, &$article, &$params, $page = 0)
+	{
+		$article->text = $this->getCNToolsJemPlgValue($context, 'onContentPrepare_BeginText') . $article->text . $this->getCNToolsJemPlgValue($context, 'onContentPrepare_EndText');
+	}
+
     public function onContentBeforeDisplay($context, &$row, &$params, $page = 0) {
-		$lValue = $this->getValue($context, 'onContentBeforeDisplay');
+		$lValue = $this->getCNToolsJemPlgValue($context, 'onContentBeforeDisplay');
 		return $lValue;
     }
 	
     public function onContentAfterDisplay($context, &$row, &$params, $page = 0) {
-		$lValue = $this->getValue($context, 'onContentAfterDisplay');
+		$lValue = $this->getCNToolsJemPlgValue($context, 'onContentAfterDisplay');
 		return $lValue;
     }
 	
-	protected function getValue($context, $fieldname)
+	public function onEventEnd($event_id, $event_title = '')
+	{
+		$lValue = $this->getCNToolsJemPlgValueDetail('onEventEnd');
+		return $lValue;
+	}
+	
+	public function isComJEMEvent($context)
+	{
+		if ($context == 'com_jem.event')
+		{
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public function getCNToolsJemPlgValue($context, $fieldname)
 	{
 		$lValue = '';
-		if ($context == 'com_jem.event')
+		if ($this->isComJEMEvent($context))
+		{
+			$lValue = $this->getCNToolsJemPlgValueDetail($fieldname);
+		}
+		return $lValue;
+	}
+	
+	public function getCNToolsJemPlgValueDetail($fieldname)
+	{
+		$lNLSCode = strtoupper('Plg_CNTools_JEM_ContentExt_' . $fieldname);
+		$lValue = JText::_($lNLSCode);
+		if ($lValue == $lNLSCode) { $lValue =''; }
+		
+		if ($lValue == '')
 		{
 			$lValue = $this->params->get($fieldname, '');
 		}

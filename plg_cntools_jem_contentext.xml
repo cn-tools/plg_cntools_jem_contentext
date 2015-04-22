@@ -7,7 +7,7 @@
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
 	<authorEmail>cn-tools@gmx.at</authorEmail>
 	<authorUrl>https://github.com/cn-tools/</authorUrl>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	
 	<description>PLG_CNTOOLS_JEM_CONTENTEXT_DESC</description>
 
@@ -26,10 +26,23 @@
     <config>
         <fields name="params">
             <fieldset name="setonContentBeforeDisplay" label="PLG_CNTOOLS_JEM_CONTENTEXT_CONTENTBEFOREDISPLAY">
-				<field name="onContentBeforeDisplay" type="editor" buttons="true" label="PLG_CNTOOLS_JEM_CONTENTEXT_TEXT" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_jem" required="false" />
+				<field name="onContentBeforeDisplay" type="editor" buttons="true" label="PLG_CNTOOLS_JEM_CONTENTEXT_TEXT" description="PLG_CNTOOLS_JEM_CONTENTEXT_CONTENTBEFOREDISPLAY_DESC" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_jem" required="false" />
+				<field name="note11" type="note" description="PLG_CNTOOLS_JEM_CONTENTEXT_CONTENTBEFOREDISPLAY_LANG" />
+			</fieldset>
+            <fieldset name="setonContentPrepare" label="PLG_CNTOOLS_JEM_CONTENTEXT_CONTENTPREPARE">
+				<field name="note20" type="note" class="alert" label="NOTICE" description="PLG_CNTOOLS_JEM_CONTENTEXT_CONTENTPREPARE_LANG" />
+				<field name="onContentPrepare_BeginText" type="editor" buttons="true" label="PLG_CNTOOLS_JEM_CONTENTEXT_CONTENTPREPARE_BEGINTEXT" description="PLG_CNTOOLS_JEM_CONTENTEXT_CONTENTPREPARE_BEGINTEXT_DESC" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_jem" required="false" />
+				<field name="note21" type="note" description="PLG_CNTOOLS_JEM_CONTENTEXT_CONTENTPREPARE_BEGINTEXT_LANG" />
+				<field name="onContentPrepare_EndText" type="editor" buttons="true" label="PLG_CNTOOLS_JEM_CONTENTEXT_CONTENTPREPARE_ENDTEXT" description="PLG_CNTOOLS_JEM_CONTENTEXT_CONTENTPREPARE_ENDTEXT_DESC" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_jem" required="false" />
+				<field name="note22" type="note" description="PLG_CNTOOLS_JEM_CONTENTEXT_CONTENTPREPARE_ENDTEXT_LANG" />
+			</fieldset>
+            <fieldset name="setonEventEnd" label="PLG_CNTOOLS_JEM_CONTENTEXT_EVENTEND">
+				<field name="onEventEnd" type="editor" buttons="true" label="PLG_CNTOOLS_JEM_CONTENTEXT_TEXT" description="PLG_CNTOOLS_JEM_CONTENTEXT_EVENTEND_DESC" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_jem" required="false" />
+				<field name="note31" type="note" description="PLG_CNTOOLS_JEM_CONTENTEXT_EVENTEND_LANG" />
 			</fieldset>
             <fieldset name="setonContentAfterDisplay" label="PLG_CNTOOLS_JEM_CONTENTEXT_CONTENTAFTERDISPLAY">
 				<field name="onContentAfterDisplay" type="editor" buttons="true" label="PLG_CNTOOLS_JEM_CONTENTEXT_TEXT" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_jem" required="false" />
+				<field name="note41" type="note" description="PLG_CNTOOLS_JEM_CONTENTEXT_CONTENTAFTERDISPLAY_LANG" />
 			</fieldset>
 		</fields>
 	</config>
