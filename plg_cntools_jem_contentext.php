@@ -18,7 +18,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 class plgContentPlg_CNTools_JEM_ContentExt extends JPlugin
 {
-	public function plgContentPlg_CNTools_JEM_ContentExt( &$subject, $config )
+	public function __construct(&$subject, $config)
 	{
 		parent::__construct( $subject, $config );
 	}
