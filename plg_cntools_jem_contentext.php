@@ -7,7 +7,7 @@
  * @author Clemens Neubauer
  * @link https://github.com/cn-tools/
  * @license		GNU/GPL, see LICENSE.php
- * plg_cntools_bannerext is free software. This version may have been modified pursuant
+ * plg_cntools_jem_contentext is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
  * is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
@@ -18,14 +18,14 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 class plgContentPlg_CNTools_JEM_ContentExt extends JPlugin
 {
-	public function __construct(&$subject, $config)
-	{
-		parent::__construct( $subject, $config );
-	}
-
 	public function onContentPrepare($context, &$article, &$params, $page = 0)
 	{
-		$article->text = $this->getCNToolsJemPlgValue($context, 'onContentPrepare_BeginText') . $article->text . $this->getCNToolsJemPlgValue($context, 'onContentPrepare_EndText');
+		if (is_object($article) and property_exists($article, 'text'))
+		{
+			$article->text = $this->getCNToolsJemPlgValue($context, 'onContentPrepare_BeginText') . $article->text . $this->getCNToolsJemPlgValue($context, 'onContentPrepare_EndText');
+		} else {
+			$article = $this->getCNToolsJemPlgValue($context, 'onContentPrepare_BeginText') . $article . $this->getCNToolsJemPlgValue($context, 'onContentPrepare_EndText');
+		}
 	}
 
     public function onContentBeforeDisplay($context, &$row, &$params, $page = 0) {
